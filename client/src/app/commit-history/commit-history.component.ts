@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {GithubService} from "../services/github.service";
 
 @Component({
@@ -6,8 +6,25 @@ import {GithubService} from "../services/github.service";
   templateUrl: './commit-history.component.html',
   styleUrls: ['./commit-history.component.scss']
 })
-export class CommitHistoryComponent {
+export class CommitHistoryComponent implements OnInit {
+  data: any[] = [];
+  user: string = 'kiranitor123';
+  repository: string = 'git-commit-v2';
+
   constructor(private githubService: GithubService) {
-    this.githubService.getCommitHistory('kiranitor123', 'git-commit-v2').then(console.log)
+  }
+
+  ngOnInit() {
+    this.searchCommits();
+  }
+
+  searchCommits() {
+    this.githubService.getCommitHistory(this.user, this.repository).then((value: any[]) => {
+      this.data = value;
+      console.log(this.data)
+    }).catch(() => {
+      // Prevent any error
+      this.data = [];
+    });
   }
 }

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {firstValueFrom} from "rxjs";
+import {catchError, firstValueFrom, of} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,10 @@ export class GithubService {
 
   getCommitHistory(username: string, repository: string) {
     const url = `${this.baseUrl}/commit-history/${username}/${repository}`;
-    return firstValueFrom(this.http.get(url));
+    return firstValueFrom(this.http.get<any[]>(url).pipe(
+      catchError(() => {
+        return of([])
+      })
+    ));
   }
 }

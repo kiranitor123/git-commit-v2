@@ -1,1 +1,56 @@
-<p>commit-history works!</p>
+<div class="p-6">
+  <h1 class="text-center text-[40px] font-bold">
+    Git Commits
+  </h1>
+
+  <div class="flex flex-col items-center">
+    <label class="text-sm text-gray-600 mb-1" for="user">Username</label>
+    <input [(ngModel)]="user" class="border p-2 mb-2" id="user" placeholder="Username" type="text">
+    <label class="text-sm text-gray-600 mb-1" for="repository">Repository Name</label>
+    <input [(ngModel)]="repository" class="border p-2 mb-2" id="repository" placeholder="repository" type="text">
+    <button (click)="searchCommits()" class="bg-blue-500 text-white p-2 mb-3 rounded">Buscar Commits</button>
+  </div>
+
+  <div class="flex justify-center">
+    <table *ngIf="data.length > 0; else noData" class="w-90 divide-y divide-gray-200">
+      <thead>
+      <tr>
+        <th
+          class="flex justify-center items-center p-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+          Avatar
+        </th>
+        <th class="p-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+          Date
+        </th>
+        <th class="p-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+          Email
+        </th>
+        <th class="p-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+          Commit
+        </th>
+        <th class="p-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+          GitLink
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let commits of data" class="hover:bg-gray-100">
+        <td class="p-3 flex justify-center items-center">
+          <img [src]="commits.committer.avatar_url" alt="" class="h-12 w-12 flex-none rounded-full bg-gray-50">
+        </td>
+        <td class="p-3"> {{commits.commit.committer.date | date: 'short'}}</td>
+        <td class="p-3">{{commits.commit.committer.email }}</td>
+        <td class="p-3">{{commits.commit.message }}</td>
+        <td class="p-3"><a [href]="commits.committer.html_url" class="font-bold cursor-pointer"
+                           target="_blank">{{commits.committer.login }}</a></td>
+      </tr>
+      </tbody>
+    </table>
+    <ng-template #noData>
+      <div class="w-90 bg-gray-100 p-4 text-center">
+        No data
+      </div>
+    </ng-template>
+  </div>
+</div>
+
