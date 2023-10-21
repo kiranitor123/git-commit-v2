@@ -3,6 +3,8 @@
     "concurrently": "^8.2.2"
   },
   "scripts": {
-    "start:dev": "concurrently \"cd server && npm run start:dev\" \"cd client && ng serve\""
+    "start:dev": "concurrently \"cd server && npm run start:dev\" \"cd client && ng serve\"",
+    "test": "concurrently \"cd server && npm run test\" \"cd client && ng test\"",
+    "install": "concurrently \"cd server && npm install\" \"cd client && npm install\""
   }
 }
