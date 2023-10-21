@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CommitHistoryComponent } from './commit-history/commit-history.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CommitHistoryComponent
   ],
   imports: [
     BrowserModule,
