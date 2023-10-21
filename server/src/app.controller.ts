@@ -1,7 +1,7 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { GithubService } from './github.service';
 
-@Controller('api')
+@Controller('api/v1')
 export class AppController {
   constructor(private githubService: GithubService) {}
 
