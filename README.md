@@ -57,3 +57,7 @@ If you have another public repository, you can make changes, and this project wi
 ## License
 
 This project is licensed under the MIT License.
+
+## Example
+
+![screenshot](./images/img.png)
