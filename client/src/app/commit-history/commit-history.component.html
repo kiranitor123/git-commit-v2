@@ -34,7 +34,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let commits of data" class="hover:bg-gray-100">
+      <tr *ngFor="let commits of data" class="hover:bg-gray-100 even:bg-white odd:bg-gray-200">
         <td class="p-3 flex justify-center items-center">
           <img [src]="commits.committer.avatar_url" alt="" class="h-12 w-12 flex-none rounded-full bg-gray-50">
         </td>

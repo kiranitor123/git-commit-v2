@@ -10,6 +10,7 @@ export class CommitHistoryComponent implements OnInit {
   data: any[] = [];
   user: string = 'kiranitor123';
   repository: string = 'git-commit-v2';
+  headers = ['Avatar', 'Date', 'Email', 'Commit', 'GitLink']
 
   constructor(private githubService: GithubService) {
   }
